@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dk8ju062r6c5o"]
+[gd_scene load_steps=6 format=3 uid="uid://dk8ju062r6c5o"]
 
 [ext_resource type="PackedScene" uid="uid://bnr57ylhi3a1d" path="res://player.tscn" id="1_fj7yv"]
 [ext_resource type="Script" uid="uid://cgdsfqxydvhaj" path="res://world.gd" id="1_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://c26akcdk8cous" path="res://MainCamera.tscn" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://ci6ystotc7tk0" path="res://block.tscn" id="3_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://djjj3yrgf6sav" path="res://death_zone.tscn" id="5_036b0"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_tlwt5")
@@ -11,16 +12,17 @@ script = ExtResource("1_tlwt5")
 [node name="Camera2D" parent="." instance=ExtResource("2_aqk2v")]
 
 [node name="StartPos" type="Marker2D" parent="."]
-position = Vector2(96, 238)
+position = Vector2(101, 238)
+scale = Vector2(1.38835, 0.918131)
 
 [node name="Player" parent="." instance=ExtResource("1_fj7yv")]
 position = Vector2(42, -64)
 scale = Vector2(3, 3)
-floor_max_angle = 2.33874
+floor_max_angle = 1.41372
 floor_snap_length = 5.5
 
 [node name="Player2" parent="." instance=ExtResource("1_fj7yv")]
-position = Vector2(220, 1096)
+position = Vector2(655, -748)
 scale = Vector2(3, 3)
 script = null
 
@@ -34,6 +36,35 @@ scale = Vector2(7.2266, 1.13293)
 position = Vector2(450, 504)
 scale = Vector2(4.33523, 1.4846)
 
+[node name="plat003" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(2504, 2014)
+rotation = -3.14159
+scale = Vector2(26.9324, -2.55105)
+
+[node name="plat004" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(4847, 2014)
+rotation = -3.14159
+scale = Vector2(26.9324, -2.55105)
+
+[node name="plat005" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(7190, 2014)
+rotation = -3.14159
+scale = Vector2(26.9324, -2.55105)
+
+[node name="plat006" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(1402, 1753)
+scale = Vector2(7.2266, 1.13293)
+
+[node name="plat007" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(2152, 1637)
+rotation = -0.196315
+scale = Vector2(7.2266, 1.13293)
+
+[node name="plat008" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(1774, 1401)
+rotation = 0.102524
+scale = Vector2(7.2266, 1.13293)
+
 [node name="plat009" parent="Platforms" instance=ExtResource("3_tlwt5")]
 position = Vector2(567, 316)
 rotation = -0.0407085
@@ -44,29 +75,41 @@ position = Vector2(842, 495)
 rotation = -0.444991
 scale = Vector2(-1.29235, 3.50977)
 
-[node name="plat003" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(2504, 2014)
-scale = Vector2(-26.9324, 2.55105)
-
-[node name="plat004" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(4847, 2014)
-scale = Vector2(-26.9324, 2.55105)
-
-[node name="plat005" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(7190, 2014)
-scale = Vector2(-26.9324, 2.55105)
-
 [node name="plat011" parent="Platforms" instance=ExtResource("3_tlwt5")]
 position = Vector2(1887, 897)
 rotation = -0.938361
 scale = Vector2(-1.29235, 3.50977)
 
 [node name="plat012" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(2850, 1210)
-rotation = -1.03661
+position = Vector2(8077, 1583)
+rotation = 0.592958
 scale = Vector2(-1.29235, 3.50977)
 
 [node name="plat013" parent="Platforms" instance=ExtResource("3_tlwt5")]
 position = Vector2(1047, 718)
 rotation = -0.0407085
 scale = Vector2(3.73613, 0.653386)
+
+[node name="plat014" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(7335, 1737)
+rotation = 1.12049
+scale = Vector2(-1.29235, 3.50977)
+
+[node name="plat015" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(2902, 1330)
+scale = Vector2(6.18834, 8.37588)
+
+[node name="plat016" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(1213, 1146)
+rotation = 0.718243
+scale = Vector2(7.89378, 1.12751)
+
+[node name="DeathZones" type="Node" parent="."]
+
+[node name="zone001" parent="DeathZones" instance=ExtResource("5_036b0")]
+position = Vector2(-349, 1730)
+rotation = 2.19353
+scale = Vector2(-27.7517, -150.347)
+
+[connection signal="area_entered" from="DeathZones/zone001" to="." method="_on_zone_001_area_entered"]
+[connection signal="body_entered" from="DeathZones/zone001" to="." method="_on_zone_001_body_entered"]

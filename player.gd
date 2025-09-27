@@ -6,13 +6,14 @@ enum AccelState {
 	RUN_SPEED_UP,
 	SLOW_DOWN,
 	SLOW_DOWN_AIR,
+	SLOPE,
 	CHANGE,
 	STOP,
 	MOVE,
 	END
 }
 
-var accelx_timer: int = 0;
+var accelx_timer: float = 0.0;
 var accelx_state: AccelState = AccelState.NONE;
 var prev_dirx: float = 0.0;
 
@@ -29,6 +30,16 @@ var just_rel_left: bool = false;
 var to_jump: bool = false;
 
 const MAX_XVEL := 600.0;
+
+func reset():
+	velocity.x = 0.0;
+	velocity.y = 0.0;
+	accelx = 0.0;
+	accely = 0.0;
+	prev_dirx = 0.0;
+	accelx_state = AccelState.NONE;
+	to_jump = false;
+	accelx_timer = 0;
 
 func process_x(delta):
 	var dirx: float = 0.0;
@@ -91,6 +102,7 @@ func process_x(delta):
 		AccelState.RUN_SPEED_UP:  ax = 50.0;
 		AccelState.SLOW_DOWN:     ax = 5.0;
 		AccelState.SLOW_DOWN_AIR: ax = 0.5;
+		AccelState.SLOPE:         ax = 0.0;
 		AccelState.CHANGE:        ax = 10.0;
 		AccelState.STOP:          ax = 20.0;
 		AccelState.MOVE:          ax = 0.0;
@@ -107,7 +119,6 @@ func process_y(delta):
 	var ay: float = 0.0;
 
 	if is_on_floor():
-		
 		if Input.is_action_just_pressed("jump") or to_jump == true:
 			var did_imm_jump := to_jump;
 			to_jump = false;
@@ -119,10 +130,12 @@ func process_y(delta):
 				var angle := slope.get_angle();
 				
 				if slope.get_normal().x > 0:
-					accelx -= ay * sin(angle);
+					accelx -= ay * sin(angle) * 0.8;
 				else:
 					accelx += ay * sin(angle);
 				ay = ay * cos(angle);
+				accelx_state = AccelState.SLOPE;
+				accelx_timer = 0.5;
 	else:
 		if Input.is_action_just_pressed("jump"):
 			to_jump = true;
@@ -148,6 +161,11 @@ func _process(delta):
 	
 	velocity.x = 0 if accelx_state == AccelState.END else velocity.x;
 	
+	if accelx_state == AccelState.SLOPE:
+		accelx_timer -= delta;
+		if accelx_timer <= 0.0:
+			accelx_state = AccelState.STOP;
+			
 	print(velocity.x, ", ", velocity.y)
 	
 	move_and_slide();
