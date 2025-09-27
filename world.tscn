@@ -52,32 +52,28 @@ rotation = -3.14159
 scale = Vector2(26.9324, -2.55105)
 
 [node name="plat006" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(1402, 1753)
+position = Vector2(3218, 1743)
+rotation = 0.0592947
 scale = Vector2(7.2266, 1.13293)
 
 [node name="plat007" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(2152, 1637)
-rotation = -0.196315
-scale = Vector2(7.2266, 1.13293)
+position = Vector2(2138, 1334)
+rotation = -0.43027
+scale = Vector2(5.79258, 1.15984)
 
 [node name="plat008" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(1774, 1401)
+position = Vector2(1603, 1388)
 rotation = 0.102524
 scale = Vector2(7.2266, 1.13293)
 
 [node name="plat009" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(567, 316)
-rotation = -0.0407085
+position = Vector2(557, 410)
+rotation = -0.353394
 scale = Vector2(3.73613, 0.653386)
 
 [node name="plat010" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(842, 495)
+position = Vector2(737, 490)
 rotation = -0.444991
-scale = Vector2(-1.29235, 3.50977)
-
-[node name="plat011" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(1887, 897)
-rotation = -0.938361
 scale = Vector2(-1.29235, 3.50977)
 
 [node name="plat012" parent="Platforms" instance=ExtResource("3_tlwt5")]
@@ -85,19 +81,15 @@ position = Vector2(8077, 1583)
 rotation = 0.592958
 scale = Vector2(-1.29235, 3.50977)
 
-[node name="plat013" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(1047, 718)
-rotation = -0.0407085
-scale = Vector2(3.73613, 0.653386)
-
 [node name="plat014" parent="Platforms" instance=ExtResource("3_tlwt5")]
 position = Vector2(7335, 1737)
 rotation = 1.12049
 scale = Vector2(-1.29235, 3.50977)
 
 [node name="plat015" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(2902, 1330)
-scale = Vector2(6.18834, 8.37588)
+position = Vector2(2565, 1415)
+rotation = 0.65322
+scale = Vector2(7.2266, 1.13293)
 
 [node name="plat016" parent="Platforms" instance=ExtResource("3_tlwt5")]
 position = Vector2(1213, 1146)

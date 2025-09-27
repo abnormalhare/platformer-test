@@ -1,6 +1,10 @@
 extends Control
 
-
+func _ready():
+	Lobby.player_loaded.rpc_id(1);
 
 func _on_create_pressed():
-	get_tree().change_scene_to_file("res://world.tscn")
+	Lobby.create_server();
+
+func _on_join_pressed():
+	Lobby.create_client();
