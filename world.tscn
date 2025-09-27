@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dk8ju062r6c5o"]
+[gd_scene load_steps=5 format=3 uid="uid://dk8ju062r6c5o"]
 
 [ext_resource type="PackedScene" uid="uid://bnr57ylhi3a1d" path="res://player.tscn" id="1_fj7yv"]
 [ext_resource type="Script" uid="uid://cgdsfqxydvhaj" path="res://world.gd" id="1_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://c26akcdk8cous" path="res://MainCamera.tscn" id="2_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://ci6ystotc7tk0" path="res://block.tscn" id="3_tlwt5"]
 
 [node name="World" type="Node"]
 script = ExtResource("1_tlwt5")
+
+[node name="Camera2D" parent="." instance=ExtResource("2_aqk2v")]
 
 [node name="StartPos" type="Marker2D" parent="."]
 position = Vector2(96, 238)
@@ -13,18 +16,57 @@ position = Vector2(96, 238)
 [node name="Player" parent="." instance=ExtResource("1_fj7yv")]
 position = Vector2(42, -64)
 scale = Vector2(3, 3)
+floor_max_angle = 2.33874
+floor_snap_length = 5.5
 
 [node name="Player2" parent="." instance=ExtResource("1_fj7yv")]
-position = Vector2(107, -65)
+position = Vector2(220, 1096)
 scale = Vector2(3, 3)
 script = null
 
 [node name="Platforms" type="Node" parent="."]
 
-[node name="StaticBody2D" parent="Platforms" instance=ExtResource("3_tlwt5")]
-position = Vector2(136, 434)
-scale = Vector2(2.82324, 1.72477)
+[node name="plat001" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(-69, 447)
+scale = Vector2(7.2266, 1.13293)
 
-[node name="StaticBody2D2" parent="Platforms" instance=ExtResource("3_tlwt5")]
+[node name="plat002" parent="Platforms" instance=ExtResource("3_tlwt5")]
 position = Vector2(450, 504)
 scale = Vector2(4.33523, 1.4846)
+
+[node name="plat009" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(567, 316)
+rotation = -0.0407085
+scale = Vector2(3.73613, 0.653386)
+
+[node name="plat010" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(842, 495)
+rotation = -0.444991
+scale = Vector2(-1.29235, 3.50977)
+
+[node name="plat003" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(2504, 2014)
+scale = Vector2(-26.9324, 2.55105)
+
+[node name="plat004" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(4847, 2014)
+scale = Vector2(-26.9324, 2.55105)
+
+[node name="plat005" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(7190, 2014)
+scale = Vector2(-26.9324, 2.55105)
+
+[node name="plat011" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(1887, 897)
+rotation = -0.938361
+scale = Vector2(-1.29235, 3.50977)
+
+[node name="plat012" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(2850, 1210)
+rotation = -1.03661
+scale = Vector2(-1.29235, 3.50977)
+
+[node name="plat013" parent="Platforms" instance=ExtResource("3_tlwt5")]
+position = Vector2(1047, 718)
+rotation = -0.0407085
+scale = Vector2(3.73613, 0.653386)
